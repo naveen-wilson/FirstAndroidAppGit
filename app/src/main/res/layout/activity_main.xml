@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="#F3DB0A"
+        android:padding="5sp"
+        tools:ignore="NewApi">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/siteSelector"
+            android:textSize="23sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginRight="20sp"
+            android:layout_marginLeft="20sp"
+            android:gravity="center"
+            android:textColor="#000000">
+
+        </TextView>
+
+    </Toolbar>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="560dp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="15sp"
+        android:padding="15sp">
+
+    </ListView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="94dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="0"
+        android:layout_marginTop="15sp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="#FFEB3B"
+        app:fabSize="normal"
+        app:maxImageSize="65sp"
+        app:srcCompat="@android:drawable/ic_input_add"
+        app:useCompatPadding="false" />
+
+</LinearLayout>

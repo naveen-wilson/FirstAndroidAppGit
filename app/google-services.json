@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "682655172736",
+    "firebase_url": "https://workassist-a7e94.firebaseio.com",
+    "project_id": "workassist-a7e94",
+    "storage_bucket": "workassist-a7e94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682655172736:android:abad6740726bd5873f7e65",
+        "android_client_info": {
+          "package_name": "com.example.workassist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682655172736-fhtlfl44rcv64neqq3rnnl3g8ao3g954.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK48QbrjeSPADbv7WPzwKbbkdlD-1blco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682655172736-fhtlfl44rcv64neqq3rnnl3g8ao3g954.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
