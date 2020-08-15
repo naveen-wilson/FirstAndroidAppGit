@@ -1,25 +1,30 @@
 package com.example.workassist;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends BaseActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    /* access modifiers changed from: protected */
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView((int) R.layout.activity_main);
+        database = FirebaseDatabase.getInstance();
+        myRef= database.getReference("Users");
+        myRef.setValue(null);
+        Toast.makeText(this, myRef.toString(), Toast.LENGTH_SHORT).show();
 
-        Button btn = (Button)findViewById(R.id.addSites);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
+        ((FloatingActionButton) findViewById(R.id.floatingActionButton)).setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddSites.class));
+                MainActivity.this.startActivity(new Intent(MainActivity.this, AddSites.class));
             }
         });
     }

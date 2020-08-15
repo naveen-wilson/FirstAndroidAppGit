@@ -42,12 +42,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private LoginViewModel loginViewModel;
     // ...
 // Initialize Firebase Auth
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    EditText usernameEditText = findViewById(R.id.username);
-    EditText passwordEditText = findViewById(R.id.password);
-    Button loginButton = findViewById(R.id.login);
-    TextView register = findViewById(R.id.register);
-    ProgressBar loadingProgressBar = findViewById(R.id.loading);
+    private FirebaseAuth mAuth;
+    EditText usernameEditText;
+    EditText passwordEditText;
+    Button loginButton;
+    TextView register;
+    ProgressBar loadingProgressBar;
     private static final String TAG = "EmailPassword";
 
     @Override
@@ -56,6 +56,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         setProgressBar(loadingProgressBar);
 
+        mAuth = FirebaseAuth.getInstance();
+        usernameEditText = findViewById(R.id.username);
+        passwordEditText = findViewById(R.id.password);
+        loginButton = findViewById(R.id.login);
+        register = findViewById(R.id.register);
+        loadingProgressBar = findViewById(R.id.loading);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
