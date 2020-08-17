@@ -12,5 +12,22 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="register">"New User ? Register"</string>
-
+    <string name="addSiteHead">Enter the details of new Site</string>
+    <string name="add">Add</string>
+    <string name="ownerNameHint">Owner Name</string>
+    <string name="sqFeetHint">Enter Square Feet</string>
+    <string name="locationHint">Location Of the Site</string>
+    <string name="submit">Submit</string>
+    <string name="clear">Clear</string>
+    <array name="workList">
+        <item>Concrete Works</item>
+        <item>Construction of Walls</item>
+        <item>Roofing</item>
+        <item>Plastering Work</item>
+        <item>Fixing of Doors and Windows</item>
+        <item>Electrical Works</item>
+        <item>Plumbing Works</item>
+        <item>Tiles Laying</item>
+        <item>Painting</item>
+    </array>
 </resources>

@@ -9,8 +9,11 @@ import android.widget.ProgressBar;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class BaseActivity extends AppCompatActivity {
 
+    public static ArrayList<String> workList= new ArrayList<String>();
         @VisibleForTesting
         public ProgressBar mProgressBar;
 

@@ -36,18 +36,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private LoginViewModel loginViewModel;
     // ...
 // Initialize Firebase Auth
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    EditText usernameEditText = findViewById(R.id.username);
-    EditText passwordEditText = findViewById(R.id.password);
-    Button loginButton = findViewById(R.id.login);
-    TextView register = findViewById(R.id.register);
-    ProgressBar loadingProgressBar = findViewById(R.id.loading);
+    private FirebaseAuth mAuth;
+    EditText usernameEditText;
+    EditText passwordEditText;
+    Button loginButton;
+    TextView register;
+    ProgressBar loadingProgressBar;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
     private static final String TAG = "EmailPassword";
 
     @Override
@@ -56,11 +60,21 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         setProgressBar(loadingProgressBar);
 
+        mAuth = FirebaseAuth.getInstance();
+        usernameEditText = findViewById(R.id.username);
+        passwordEditText = findViewById(R.id.password);
+        loginButton = findViewById(R.id.login);
+        register = findViewById(R.id.register);
+        loadingProgressBar = findViewById(R.id.loading);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
         loginButton.setOnClickListener(this);
         register.setOnClickListener(this);
+    }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     @Override
@@ -72,10 +86,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void updateUI(FirebaseUser user) {
-        hideProgressBar();
+        //hideProgressBar();
         if(user != null){
             Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, MainActivity.class));
+            finish();
         }else {
             Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
         }
@@ -119,6 +134,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            database = FirebaseDatabase.getInstance();
+                            myRef= database.getReference().child("Users").child(user.getUid());
+                            myRef.setValue(user.getEmail());
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
