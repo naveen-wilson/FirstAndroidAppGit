@@ -28,108 +28,77 @@
             android:textSize="23sp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <Spinner
-        android:id="@+id/addWork"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginLeft="23dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/listWork"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sqFeet"
-        app:layout_constraintVertical_bias="0.494" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="112dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:text="@string/add"
-        app:layout_constraintBottom_toTopOf="@+id/listWork"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addWork"
-        app:layout_constraintTop_toBottomOf="@+id/sqFeet"
-        app:layout_constraintVertical_bias="0.506" />
-
     <EditText
         android:id="@+id/ownerName"
         android:layout_width="366dp"
         android:layout_height="55dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="68dp"
         android:hint="@string/ownerNameHint"
         android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/location"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.78" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
         android:id="@+id/sqFeet"
         android:layout_width="366dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="56dp"
         android:ems="10"
         android:hint="@string/sqFeetHint"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/addWork"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <EditText
+        android:id="@+id/remarks"
+        android:layout_width="366dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="56dp"
+        android:hint="@string/remark"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sqFeet" />
 
     <EditText
         android:id="@+id/location"
         android:layout_width="366dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="56dp"
         android:hint="@string/locationHint"
         android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/sqFeet"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.577"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ownerName" />
 
-    <ListView
-        android:id="@+id/listWork"
-        android:layout_width="364dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addWork" />
-
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submit"
         android:layout_width="204dp"
         android:layout_height="50sp"
+        android:layout_marginBottom="84dp"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/clear"
         app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listWork" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/clear"
         android:layout_width="126dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="84dp"
         android:text="@string/clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/listWork" />
+        app:layout_constraintStart_toEndOf="@+id/submit" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -135,7 +135,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             database = FirebaseDatabase.getInstance();
-                            myRef= database.getReference().child("Users").child(user.getUid());
+                            myRef= database.getReference().child("Users").child(user.getUid()).child("Email");
                             myRef.setValue(user.getEmail());
                             updateUI(user);
                         } else {

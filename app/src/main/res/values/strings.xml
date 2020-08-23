@@ -19,6 +19,7 @@
     <string name="locationHint">Location Of the Site</string>
     <string name="submit">Submit</string>
     <string name="clear">Clear</string>
+    <string name="remark">Remarks</string>
     <array name="workList">
         <item>Concrete Works</item>
         <item>Construction of Walls</item>
