@@ -3,7 +3,7 @@ package com.example.workassist.models;
 import android.icu.util.ULocale;
 
 public class Site {
-    private int active=1;
+    private Boolean active=true;
     private String ownerName;
     private String location;
     private Float sqFeet ;
@@ -11,18 +11,19 @@ public class Site {
     public Site(){
 
     }
-    public Site(String ownerName, String location, Float sqFeet, String remarks){
+    public Site(String ownerName, Boolean active, String location, Float sqFeet, String remarks){
         this.ownerName=ownerName;
+        this.active=active;
         this.location=location;
         this.sqFeet=sqFeet;
         this.remarks=remarks;
     }
 
-    public int getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

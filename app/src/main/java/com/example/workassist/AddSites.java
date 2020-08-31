@@ -2,6 +2,7 @@ package com.example.workassist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -23,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+
 public class AddSites extends AppCompatActivity implements OnClickListener {
     //ArrayAdapter<String> adapterList;
     //ArrayAdapter<String> adapterSpinner;
@@ -40,7 +43,7 @@ public class AddSites extends AppCompatActivity implements OnClickListener {
     Toolbar toolbar;
     FirebaseDatabase database;
     DatabaseReference myRef;
-
+    private static DecimalFormat df = new DecimalFormat("0.00");
     /* access modifiers changed from: protected */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,7 @@ public class AddSites extends AppCompatActivity implements OnClickListener {
         this.sqFeet = (EditText) findViewById(R.id.sqFeet);
         //this.listWork = (ListView) findViewById(R.id.listWork);
         //this.works = (Spinner) findViewById(R.id.addWork);
-        //this.add = (Button) findViewById(R.id.button2);
+        //this.add = (Button) findViewById(R.id.button2)`;
         this.clear = (Button) findViewById(R.id.clear);
         this.submit = (Button) findViewById(R.id.submit);
         //this.list = new ArrayList<>();
@@ -76,31 +79,54 @@ public class AddSites extends AppCompatActivity implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.submit:
-                this.database = FirebaseDatabase.getInstance();
-                myRef= database.getReference("Users/"+mAuth.getCurrentUser().getUid()).child("Sites");
-                Site site = new Site();
-                site.setLocation(location.getText().toString());
-                site.setOwnerName(ownerName.getText().toString());
-                site.setSqFeet(Float.valueOf(sqFeet.getText().toString()));
-                site.setRemarks(remarks.getText().toString());
-                myRef.push().setValue(site)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    // Write was successful!
-                    // ...
-                    AddSites.this.startActivity(new Intent(AddSites.this, MainActivity.class));
-                    finish();
+
+                boolean valid = true;
+                if (TextUtils.isEmpty(ownerName.getText().toString())) {
+                    ownerName.setError("Required.");
+                    valid = false;
                 }
-            })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Write failed
-                            // ...
-                            Toast.makeText(AddSites.this, e.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+                if (TextUtils.isEmpty(location.getText().toString())) {
+                    location.setError("Required.");
+                    valid = false;
+                }
+                if (TextUtils.isEmpty(sqFeet.getText().toString())) {
+                    sqFeet.setError("Required.");
+                    valid = false;
+                }
+                if(!valid) {
+                    Toast.makeText(this, "Please Fill All The Mandatory Details", Toast.LENGTH_SHORT).show();
+                    return;
+                    }
+                    this.database = FirebaseDatabase.getInstance();
+                    myRef = database.getReference("Users/" + mAuth.getCurrentUser().getUid()).child("Sites");
+                    Site site = new Site();
+                    site.setLocation(location.getText().toString());
+                    site.setOwnerName(ownerName.getText().toString());
+                    site.setSqFeet(Float.parseFloat(sqFeet.getText().toString()));
+                    if (TextUtils.isEmpty(remarks.getText().toString())) {
+                        site.setRemarks("");
+                    }else{
+                        site.setRemarks(remarks.getText().toString());
+                    }
+                Toast.makeText(AddSites.this, "HIII", Toast.LENGTH_LONG).show();
+                    myRef.push().setValue(site)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    // Write was successful!
+                                    // ...
+                                    AddSites.this.startActivity(new Intent(AddSites.this, MainActivity.class));
+                                    finish();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // Write failed
+                                    // ...
+                                    Toast.makeText(AddSites.this, e.toString(), Toast.LENGTH_LONG).show();
+                                }
+                            });
 
                 return;
 //            case R.id.button2 :
